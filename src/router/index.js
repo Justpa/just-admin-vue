@@ -38,21 +38,26 @@ export default new Router({
         },
       ]
     },
+
     {
       path: '/',
       component: Home,
-      name: '表格',
-      redirect:'/echarts',
       icon:'el-icon-edit',
+      name: '组件库',
       children: [
         {
-          path: '/echarts',
+          path: '/example/table',
+          component: function (resolve) { require(['../views/example/user.vue'], resolve)},
+          name: '表格',
+        },
+        {
+          path: '/example/echarts',
           component: function (resolve) { require(['../views/charts/echarts.vue'], resolve)},
-          name: 'echarts',
-          hidden:true
+          name: '图表',
         }
       ]
-    }
+    },
+
 
   ]
 })
