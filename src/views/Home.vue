@@ -55,21 +55,18 @@
 				</ul>
 			</aside>
 			<section class="content-container">
-				<div class="grid-content bg-purple-light">
-					<el-col :span="24" class="breadcrumb-container">
-						<strong class="title">{{$route.name}}</strong>
-						<el-breadcrumb separator="/" class="breadcrumb-inner">
-							<el-breadcrumb-item v-for="item in $route.matched" :key="item.path">
-								{{ item.name }}
-							</el-breadcrumb-item>
-						</el-breadcrumb>
-					</el-col>
-					<el-col :span="24" class="content-wrapper">
-						<transition name="fade" mode="out-in">
-							<router-view></router-view>
-						</transition>
-					</el-col>
-				</div>
+        <el-col :span="24" class="breadcrumb-container">
+          <el-breadcrumb separator="/" class="breadcrumb-inner">
+            <el-breadcrumb-item v-for="item in $route.matched" :key="item.path">
+              {{ item.name }}
+            </el-breadcrumb-item>
+          </el-breadcrumb>
+        </el-col>
+        <el-col :span="24" class="content-wrapper">
+          <transition name="fade" mode="out-in">
+            <router-view></router-view>
+          </transition>
+        </el-col>
 			</section>
 		</el-col>
 	</el-row>
@@ -135,7 +132,6 @@
 
 <style scoped lang="scss">
 	@import '../styles/vars.scss';
-
 	.container {
 		position: absolute;
 		top: 0px;
@@ -194,6 +190,17 @@
 				cursor: pointer;
 			}
 		}
+    .breadcrumb-container {
+      margin-bottom: 20px;
+      height: 30px;
+      line-height: 30px;
+      .el-breadcrumb {
+        line-height: 30px;
+      }
+      .breadcrumb-inner {
+        text-align: left;
+      }
+    }
     aside {
       width: 230px;
       background: #545c64;
@@ -216,16 +223,7 @@
         }
       }
     }
-    .breadcrumb-container {
-      .title {
-        width: 200px;
-        float: left;
-        color: #475669;
-      }
-      .breadcrumb-inner {
-        float: right;
-      }
-    }
+
     .main {
 			display: flex;
 			position: absolute;
@@ -242,12 +240,13 @@
       }
 			.content-container {
 				flex:1;
-				overflow-y: scroll;
+				overflow-y: auto;
 				padding: 20px;
 			}
       .content-wrapper {
         background-color: #fff;
         box-sizing: border-box;
+        text-align: left;
       }
     }
 	}
