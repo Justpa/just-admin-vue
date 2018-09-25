@@ -1,4 +1,5 @@
 import axios from 'axios';
+import { request } from '../utils'
 import MockAdapter from 'axios-mock-adapter';
 import { LoginUsers, Users } from './data/user';
 let _Users = Users;
@@ -45,39 +46,20 @@ export default {
 
     //获取用户列表
     mock.onGet('/user/list').reply(config => {
-      let {name} = config.params;
-      let mockUsers = _Users.filter(user => {
-        if (name && user.name.indexOf(name) == -1) return false;
-        return true;
-      });
+      const { name = '', pageSize = 10, pageIndex = 1 } = config.params;
+      let mockUsers = name ? _Users.filter(user => user.name.indexOf(name) > 0) :  _Users;
+      let records = mockUsers.filter((u, index) => index < pageSize * pageIndex && index >= pageSize * (pageIndex - 1));
       return new Promise((resolve, reject) => {
         setTimeout(() => {
           resolve([200, {
-            users: mockUsers
+            records: records,
+            total:mockUsers.length,
+            pageIndex:pageIndex,
+            pageSize:pageSize
           }]);
         }, 1000);
       });
     });
-
-    //获取用户列表（分页）
-    mock.onGet('/user/listpage').reply(config => {
-      let {page, name} = config.params;
-      let mockUsers = _Users.filter(user => {
-        if (name && user.name.indexOf(name) == -1) return false;
-        return true;
-      });
-      let total = mockUsers.length;
-      mockUsers = mockUsers.filter((u, index) => index < 20 * page && index >= 20 * (page - 1));
-      return new Promise((resolve, reject) => {
-        setTimeout(() => {
-          resolve([200, {
-            total: total,
-            users: mockUsers
-          }]);
-        }, 1000);
-      });
-    });
-
     //删除用户
     mock.onGet('/user/remove').reply(config => {
       let { id } = config.params;

@@ -1,7 +1,7 @@
 <template>
   <div>
     <p>
-      Clicked: {{ $store.state.count }} times, count is {{ evenOrOdd }}.
+      Clicked: {{ $store.state.counter.count }} times, count is
     </p>
     <el-button type="primary" @click="increment">加</el-button>
     <el-button type="primary" @click="decrement">减</el-button>
@@ -9,19 +9,26 @@
     <el-button type="primary" @click="incrementAsync">Increment async</el-button>
   </div>
 </template>
-
 <script>
 import { mapGetters, mapActions } from 'vuex'
 
 export default {
-  computed: mapGetters([
+  data(){
+    return {
+      count:null
+    }
+  },
+  mounted:()=>{
+
+  },
+
+  computed: {
+    ...mapGetters([
     'evenOrOdd'
-  ]),
-  methods: mapActions([
-    'increment',
-    'decrement',
-    'incrementIfOdd',
-    'incrementAsync'
   ])
+  },
+  methods: mapActions('counter', [
+    'increment','decrement','incrementIfOdd','incrementAsync'
+  ]),
 }
 </script>

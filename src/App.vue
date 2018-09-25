@@ -10,7 +10,7 @@ export default {
 }
 </script>
 
-<style>
+<style <style lang="scss">
 #app {
   font-family: 'Avenir', Helvetica, Arial, sans-serif;
   -webkit-font-smoothing: antialiased;
@@ -22,5 +22,16 @@ export default {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
+}
+.el-table {
+  table {
+    overflow-x: auto;
+  }
+  .cell, tr td {
+    white-space:initial;
+    overflow: initial;
+    text-overflow:inherit;
+    word-break: break-word;
+  }
 }
 </style>

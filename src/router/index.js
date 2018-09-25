@@ -13,7 +13,7 @@ export default new Router({
       hidden:true
     },
     {
-      path: '/dashboard',
+      path: '/',
       component: Home,
       icon:'el-icon-edit',
       children:[
@@ -31,18 +31,18 @@ export default new Router({
       name: '组件库',
       children: [
         {
-          path: '/components/table',
-          component: function (resolve) { require(['../views/components/table.vue'], resolve)},
+          path: '/examples/table',
+          component: function (resolve) { require(['../views/examples/table.vue'], resolve)},
           name: '表格',
         },
         {
-          path: '/components/button',
-          component: function (resolve) { require(['../views/components/button.vue'], resolve)},
+          path: '/examples/button',
+          component: function (resolve) { require(['../views/examples/button.vue'], resolve)},
           name: '按钮',
         },
         {
-          path: '/components/form',
-          component: function (resolve) { require(['../views/components/form.vue'], resolve)},
+          path: '/examples/form',
+          component: function (resolve) { require(['../views/examples/form.vue'], resolve)},
           name: '表单',
         },
       ]
@@ -52,7 +52,6 @@ export default new Router({
       path: '/',
       component: Home,
       icon:'el-icon-edit',
-      name: '图像',
       children: [
         {
           path: '/echarts',
