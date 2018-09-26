@@ -1,6 +1,6 @@
 <template>
 	<section class="list-box">
-    <el-table :data="dataSource" highlight-current-row style="width: 100%;">
+    <el-table :data="dataSource" fixed height="400" border highlight-current-row style="width: 100%;">
 			<el-table-column type="index" width="60"></el-table-column>
       <el-table-column v-for="(column, index) in  columns" :width="column.width ? column.width : null" :key="index" :prop='column.columnName' :label='column.columnKey' sortable>
       </el-table-column>

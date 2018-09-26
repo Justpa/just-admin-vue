@@ -91,6 +91,7 @@ export default {
     background-clip: padding-box;
     z-index: 1;
     width: 400px;
+    text-align: left;
     padding: 35px 35px 15px 35px;
     background: #fff;
     border: 1px solid #eaeaea;
