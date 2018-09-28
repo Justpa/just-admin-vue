@@ -2,8 +2,7 @@
 const prefix = ''
 const agent = 'https://bird.ioliu.cn/v1/?url='
 const wangyi = agent + 'http://music.163.com'
-// const qq = agent + 'https://y.qq.com/'  test
-
+// const qq = agent + 'https://y.qq.com/'
 
 export default {
     music: {
