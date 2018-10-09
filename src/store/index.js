@@ -1,12 +1,9 @@
 import Vue from 'vue'
 import Vuex from 'vuex'
-import counter from './counter'
-import dashboard from './dashboard'
 Vue.use(Vuex)
-
+const stores = ['counter','dashboard'];
+let modules = {}
+stores.map(store=> modules[store] = require('./' + store).default)
 export default new Vuex.Store({
-  modules:{
-    counter:counter,
-    dashboard:dashboard
-  }
+  modules
 })

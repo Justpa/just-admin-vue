@@ -144,8 +144,6 @@ export default {
     font-size: 30px;
     margin-bottom: 10px;
   }
-  &-info {
-  }
   .el-col {
     background: #20a033;
     padding: 20px 0;

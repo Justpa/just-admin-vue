@@ -7,8 +7,8 @@ export default new Router({
   routes: [
     {
       path: '/login',
-      component: (resolve)=> {
-        require(['../views/Login.vue'], resolve)
+      component: resolve => {
+        require(['@/views/Login.vue'], resolve)
       },
       hidden:true
     },
@@ -19,7 +19,7 @@ export default new Router({
       children:[
         {
           path: '/dashboard',
-          component: function (resolve) {require(['../views/dashboard/index.vue'], resolve)},
+          component: resolve=> {require(['@/views/dashboard/index'], resolve)},
           name: '首页',
         },
       ]
@@ -32,17 +32,17 @@ export default new Router({
       children: [
         {
           path: '/examples/table',
-          component: function (resolve) { require(['../views/examples/table.vue'], resolve)},
+          component: resolve=> { require(['@/views/examples/table'], resolve)},
           name: '表格',
         },
         {
           path: '/examples/button',
-          component: function (resolve) { require(['../views/examples/button.vue'], resolve)},
+          component: resolve=> { require(['@/views/examples/button'], resolve)},
           name: '按钮',
         },
         {
           path: '/examples/form',
-          component: function (resolve) { require(['../views/examples/form.vue'], resolve)},
+          component: resolve=> { require(['@/views/examples/form'], resolve)},
           name: '表单',
         },
       ]
@@ -55,7 +55,7 @@ export default new Router({
       children: [
         {
           path: '/echarts',
-          component: function (resolve) { require(['../views/charts/echarts.vue'], resolve)},
+          component: resolve=> { require(['@/views/charts/echarts'], resolve)},
           name: '图表',
         },
       ]
@@ -68,7 +68,7 @@ export default new Router({
       children: [
         {
           path: '/counter',
-          component: function (resolve) { require(['../views/counter/index.vue'], resolve)},
+          component: resolve=> { require(['@/views/counter/index'], resolve)},
           name: '计数器',
         }
       ]
